@@ -6,9 +6,9 @@ class UserController {
     try {
       const { name, email, password } = req.body;
 
-      const userExists = await User.findOne({ where: { email }});
+      const userExists = await User.findOne({ where: { email } });
       if (userExists) {
-        return res.status(400).json({ error: 'Este e-mail já está em uso.'});
+        return res.status(400).json({ error: "Este e-mail já está em uso." });
       }
 
       const password_hash = await bcrypt.hash(password, 8);
@@ -25,9 +25,11 @@ class UserController {
         email: user.email,
       });
     } catch (error) {
-      console.error('ERRO NO USER CONTROLLER:', error);
-      
-      return res.status(500).json({ error: 'Falha ao criar usuário.', details: error.message });
+      console.error("ERRO NO USER CONTROLLER:", error);
+
+      return res
+        .status(500)
+        .json({ error: "Falha ao criar usuário.", details: error.message });
     }
   }
 }

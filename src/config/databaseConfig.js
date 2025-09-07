@@ -1,9 +1,11 @@
+import "dotenv/config";
+
 export default {
-  dialect: 'postgres',
-  host: 'localhost',
-  username: 'docker',
-  password: 'docker',
-  database: 'gymforce_db',
+  dialect: "postgres",
+  host: process.env.DB_HOST || "localhost",
+  username: process.env.DB_USER || "docker",
+  password: process.env.DB_PASS || "docker",
+  database: process.env.DB_NAME || "gymforce_db",
   define: {
     timestamps: true,
     underscore: true,
@@ -11,4 +13,3 @@ export default {
   },
   logging: console.log,
 };
-

@@ -1,4 +1,4 @@
-import { Model, DataTypes } from 'sequelize'
+import { Model, DataTypes } from "sequelize";
 
 class User extends Model {
   static init(sequelize) {
@@ -15,13 +15,13 @@ class User extends Model {
       },
       {
         sequelize,
-        tableName: 'users',
-      }
+        tableName: "users",
+      },
     );
   }
 
   static associate(models) {
-    this.hasMany(models.Checkin, { foreignKey: 'user_id', as: 'checkins' });
+    this.hasMany(models.Checkin, { foreignKey: "user_id", as: "checkins" });
   }
 }
 

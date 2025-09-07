@@ -1,17 +1,23 @@
-import { Model, DataTypes } from 'sequelize'
+import { Model, DataTypes } from "sequelize";
 
 class Checkin extends Model {
   static init(sequelize) {
-    super.init({},
+    super.init(
+      {
+        gym_id: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+        },
+      },
       {
         sequelize,
-        tableName: 'checkins'
-      }
+        tableName: "checkins",
+      },
     );
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'user_id', id: 'user'})
+    this.belongsTo(models.User, { foreignKey: "user_id", id: "user" });
   }
 }
 

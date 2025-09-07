@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  # Serviço do Banco de Dados PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: gymforce_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: gymforce_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Serviço da API
+  api:
+    build: .
+    container_name: gymforce_api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: docker
+      DB_PASS: docker
+      DB_NAME: gymforce_db
+      APP_SECRET: gymforce_senha_secreta
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

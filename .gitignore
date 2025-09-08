@@ -1,3 +1,15 @@
-node_modules
+# Arquivo de log de debug do NPM
+npm-debug.log*
+
+# Dependências do projeto
+node_modules/
+
+# Arquivos de ambiente
 .env
-continua.md
+
+# Arquivos gerados pelos testes
+__tests__/database.sqlite
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db

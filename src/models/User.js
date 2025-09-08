@@ -12,6 +12,11 @@ class User extends Model {
         name: DataTypes.STRING,
         email: DataTypes.STRING,
         password_hash: DataTypes.STRING,
+        is_admin: {
+          type: DataTypes.BOOLEAN,
+          defaultValue: false,
+          allowNull: false,
+        },
       },
       {
         sequelize,
